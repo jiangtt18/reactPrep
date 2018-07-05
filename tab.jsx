@@ -51,7 +51,7 @@ export default class Tab extends React.Component {
               panes={this.props.panes}
               >
             </Headers>
-            <div>
+            <div className='tab-content'>
               <article>{pane.content}</article>
             </div>
         </div>

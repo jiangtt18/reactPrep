@@ -55,7 +55,7 @@ class Calculator extends React.Component{
   }
 
   clear(e){
-    e.preventdefault();
+    e.preventDefault();
     this.setState({
       result: 0,
       Num1:'',

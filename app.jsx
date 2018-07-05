@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import Calculator from './calculator';
+import Widgets from './widgets';
 
 document.addEventListener('DOMContentLoaded', function () {
-  ReactDOM.render(<Calculator />, document.getElementById('main'));
+  ReactDOM.render(<Widgets />, document.getElementById('main'));
 });

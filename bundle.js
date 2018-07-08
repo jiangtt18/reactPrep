@@ -9976,6 +9976,7 @@ var Weather = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this, props));
 
     _this.state = { weather: null };
+    _this.success = _this.success.bind(_this);
     return _this;
   }
   // bb3d1ccf2823dbd16d3738742b9a13d9
@@ -9991,23 +9992,46 @@ var Weather = function (_React$Component) {
   }, {
     key: 'success',
     value: function success(pos) {
+      var _this2 = this;
+
       var lat = pos.coords.latitude;
       var lon = pos.coords.longitude;
       var request = new XMLHttpRequest();
-      var url = 'api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon;
+      var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=bb3d1ccf2823dbd16d3738742b9a13d9';
       request.open('GET', url, true);
       request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
           var weather = JSON.parse(request.responseText);
-          this.setState({ weather: weather });
+          _this2.setState({ weather: weather });
         } else {
           alert('failed to get weather API');
         }
       };
+      request.send();
     }
   }, {
     key: 'render',
     value: function render() {
+      var content = _react2.default.createElement('div', null);
+      if (this.state.weather) {
+        var weather = this.state.weather;
+        var temp = (weather.main.temp - 273.15) * 1.8 + 32;
+        content = _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'p',
+            null,
+            weather.name
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            temp.toFixed(1),
+            ' degrees'
+          )
+        );
+      }
       return _react2.default.createElement(
         'div',
         null,
@@ -10019,7 +10043,7 @@ var Weather = function (_React$Component) {
         _react2.default.createElement(
           'p',
           null,
-          this.state.weather
+          content
         )
       );
     }

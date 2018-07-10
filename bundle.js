@@ -10040,11 +10040,7 @@ var Weather = function (_React$Component) {
           null,
           'Mountain View Weather'
         ),
-        _react2.default.createElement(
-          'p',
-          null,
-          content
-        )
+        content
       );
     }
   }]);

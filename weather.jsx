@@ -42,7 +42,7 @@ export default class Weather extends React.Component{
     return(
     <div>
       <p>Mountain View Weather</p>
-      <p>{content}</p>
+      {content}
     </div>
   );
   }

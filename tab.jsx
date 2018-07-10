@@ -35,7 +35,9 @@ export default class Tab extends React.Component {
   }
 
   selectTab(num){
+    console.log(this);
     this.setState({selectedPane: num});
+
   }
 
 

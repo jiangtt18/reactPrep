@@ -6,10 +6,12 @@ export default class AutoComplete extends React.Component{
     this.state = {
       inputVal: ''
     };
-    this.handClick = this.handleClick.bind(this);
+    this.updateFields = this.updateFields.bind(this);
+    this.selectName = this.selectName.bind(this);
   }
 
   updateFields(e){
+    console.log(this);
     this.setState({inputVal:e.currentTarget.value});
   }
 
@@ -22,7 +24,7 @@ export default class AutoComplete extends React.Component{
     }
     this.props.names.forEach(name => {
       let sub = name.slice(0, this.state.inputVal.length);
-      if(sub.toLowerCase === this.state.inputVal.toLowerCase()){
+      if(sub.toLowerCase() === this.state.inputVal.toLowerCase()){
         matches.push(name);
       }
     });
@@ -42,6 +44,7 @@ export default class AutoComplete extends React.Component{
           onClick={this.selectName}>{result}</li>
       );
     });
+
     return(
       <div>
       <input
